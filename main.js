@@ -133,16 +133,31 @@ document.addEventListener('DOMContentLoaded', () => {
            }
         }
 
-        // Update Disqus iframe language
-        if (typeof DISQUS !== 'undefined') {
-            DISQUS.reset({
-                reload: true,
-                config: function () {
-                    this.page.url = "https://waryong7838.github.io/week01_test/";
-                    this.page.identifier = "week01_test_main";
-                    this.language = lang;
-                }
-            });
+        // Force full reload of Disqus to change iframe language
+        const disqusContainer = document.getElementById('disqus_thread');
+        if (disqusContainer) {
+            disqusContainer.innerHTML = ''; // Clear iframe
+            
+            // Remove existing DISQUS object
+            if (window.DISQUS) {
+                delete window.DISQUS;
+            }
+            
+            // Remove old scripts
+            document.querySelectorAll('script[src*="disqus.com/embed.js"]').forEach(s => s.remove());
+
+            // Set new configuration
+            window.disqus_config = function () {
+                this.page.url = "https://waryong7838.github.io/week01_test/";
+                this.page.identifier = "week01_test_main";
+                this.language = lang;
+            };
+
+            // Inject fresh script
+            const d = document, s = d.createElement('script');
+            s.src = 'https://week01test.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
         }
     }
 
