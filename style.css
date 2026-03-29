@@ -30,12 +30,14 @@ body {
 
 .container {
     background-color: var(--container-bg);
-    padding: 30px;
+    padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 20px var(--shadow-color);
     text-align: center;
     position: relative;
     transition: background-color 0.3s, box-shadow 0.3s;
+    width: 90%;
+    max-width: 400px;
 }
 
 .theme-toggle {
@@ -59,40 +61,44 @@ h1 {
     margin-bottom: 30px;
     margin-top: 10px;
     transition: color 0.3s;
+    font-size: 28px;
 }
 
-.lotto-numbers {
+.menu-display {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
 }
 
-.number-placeholder {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+.menu-card {
+    width: 100%;
+    min-height: 100px;
+    border-radius: 10px;
     background-color: var(--placeholder-bg);
-    margin: 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     color: var(--placeholder-text);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 #generate-btn {
-    background-color: #4CAF50;
+    background-color: #ff6b6b;
     color: white;
     padding: 15px 30px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     font-size: 18px;
+    font-weight: bold;
     transition: background-color 0.3s ease;
+    width: 100%;
 }
 
 #generate-btn:hover {
-    background-color: #45a049;
+    background-color: #ff5252;
 }

@@ -1,6 +1,7 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generate-btn');
-    const numberPlaceholders = document.querySelectorAll('.number-placeholder');
+    const menuResult = document.getElementById('menu-result');
     const themeToggleBtn = document.getElementById('theme-toggle');
 
     // Theme Toggle Logic
@@ -22,39 +23,52 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', theme);
     });
 
+    const dinnerMenus = [
+        "🍕 피자",
+        "🍔 햄버거",
+        "🍣 초밥",
+        "🥗 샐러드",
+        "🥩 스테이크",
+        "🍝 파스타",
+        "🌮 타코",
+        "🍗 치킨",
+        "🍜 라면",
+        "🍛 카레",
+        "🍲 김치찌개",
+        "🥘 된장찌개",
+        "🥓 삼겹살",
+        "🍚 볶음밥",
+        "🥟 만두",
+        "🥪 샌드위치",
+        "🍜 쌀국수",
+        "🍱 도시락",
+        "족발/보쌈",
+        "떡볶이",
+        "마라탕"
+    ];
+
     generateBtn.addEventListener('click', () => {
-        const lottoNumbers = generateLottoNumbers();
-        displayLottoNumbers(lottoNumbers);
+        // 간단한 페이드 아웃 애니메이션
+        menuResult.style.opacity = '0';
+        
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * dinnerMenus.length);
+            const selectedMenu = dinnerMenus[randomIndex];
+            menuResult.textContent = selectedMenu;
+            
+            // 랜덤 색상 지정 (선택적 효과)
+            const colors = ['#ff9999', '#ffcc99', '#ffff99', '#ccff99', '#99ff99', '#99ffcc', '#99ffff', '#99ccff', '#9999ff', '#cc99ff', '#ff99ff', '#ff99cc'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // 다크모드일 때 글자색 유지되도록 설정, 라이트 모드일 때 배경색 강조
+            if(!document.body.classList.contains('dark-mode')) {
+                 menuResult.style.backgroundColor = randomColor;
+            } else {
+                 menuResult.style.color = randomColor;
+            }
+            
+            // 페이드 인 애니메이션
+            menuResult.style.opacity = '1';
+        }, 300);
     });
-
-    function generateLottoNumbers() {
-        const numbers = new Set();
-        while (numbers.size < 6) {
-            const randomNumber = Math.floor(Math.random() * 45) + 1;
-            numbers.add(randomNumber);
-        }
-        return Array.from(numbers).sort((a, b) => a - b);
-    }
-
-    function displayLottoNumbers(numbers) {
-        numberPlaceholders.forEach((placeholder, index) => {
-            placeholder.textContent = numbers[index];
-            placeholder.style.backgroundColor = getNumberColor(numbers[index]);
-            placeholder.style.color = 'white';
-        });
-    }
-
-    function getNumberColor(number) {
-        if (number <= 10) {
-            return '#fbc400'; // Yellow
-        } else if (number <= 20) {
-            return '#69c8f2'; // Blue
-        } else if (number <= 30) {
-            return '#ff7272'; // Red
-        } else if (number <= 40) {
-            return '#aaaaaa'; // Gray
-        } else {
-            return '#b0d840'; // Green
-        }
-    }
 });
