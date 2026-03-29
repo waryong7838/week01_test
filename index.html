@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Can't decide what to eat for dinner? Let our free dinner menu recommender help you pick the perfect meal. Discover 21 delicious options with descriptions and calorie info.">
+    <meta name="keywords" content="dinner menu recommender, what to eat tonight, meal ideas, food recommendation, 저녁 메뉴 추천, 오늘 뭐 먹지">
+    <meta property="og:title" content="What's for Dinner? - Menu Recommender">
+    <meta property="og:description" content="Discover your perfect dinner in one click. 21 delicious meal options with descriptions and calorie information.">
+    <meta property="og:type" content="website">
     <title id="page-title">What's for Dinner? - Menu Recommender</title>
     <link rel="stylesheet" href="style.css">
     <meta name="google-adsense-account" content="ca-pub-7786978300251514">
@@ -14,13 +19,16 @@
         <button id="lang-toggle" class="lang-toggle" aria-label="Toggle Language">KO</button>
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
     </div>
-    
+
     <div class="container">
         <h1 id="main-heading">What should I eat for dinner?</h1>
+        <p id="main-subheading" class="subheading">Click the button below to get a random dinner recommendation from 21 delicious options.</p>
+
         <div class="menu-display">
             <div id="menu-card" class="menu-card">
-                <img id="menu-image" src="" alt="Menu Image">
+                <img id="menu-image" src="" alt="Menu Image" loading="lazy">
                 <div id="menu-result">?</div>
+                <div id="menu-description" class="menu-description"></div>
             </div>
         </div>
         <button id="generate-btn">Get a Recommendation</button>
@@ -36,6 +44,26 @@
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
         </div>
+
+        <hr class="divider">
+
+        <section class="about-section">
+            <h2 id="about-heading">About This Tool</h2>
+            <p id="about-text">Choosing what to eat for dinner can be surprisingly stressful. With so many options available, decision fatigue is real. Our dinner menu recommender takes the guesswork out of mealtime by randomly selecting from 21 popular dishes from around the world. Whether you're craving something light like a salad or something hearty like a steak, we've got you covered.</p>
+        </section>
+
+        <hr class="divider">
+
+        <section class="tips-section">
+            <h2 id="tips-heading">Dinner Planning Tips</h2>
+            <ul class="tips-list">
+                <li id="tip-0">Consider your energy level — after a long day, a quick and simple meal like fried rice or a sandwich might be ideal.</li>
+                <li id="tip-1">Balance your nutrition — alternate between protein-rich meals (steak, chicken) and lighter options (salad, soup) throughout the week.</li>
+                <li id="tip-2">Plan ahead — knowing what's in your fridge can help you narrow down options before using the recommender.</li>
+                <li id="tip-3">Try something new — use this tool as an opportunity to explore cuisines you haven't tried before, like pho or a poke bowl.</li>
+                <li id="tip-4">Share the decision — ask family or friends to use the tool together to make dinner planning a fun activity.</li>
+            </ul>
+        </section>
 
         <hr class="divider">
 
@@ -71,7 +99,16 @@
             <div id="disqus_thread"></div>
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </div>
+
+        <footer class="site-footer">
+            <p id="footer-copyright">&copy; 2024 What's for Dinner. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a id="footer-privacy" href="privacy.html">Privacy Policy</a>
+                <a id="footer-contact" href="#contact-form">Contact</a>
+            </nav>
+        </footer>
     </div>
+
     <script src="main.js"></script>
 </body>
 </html>
