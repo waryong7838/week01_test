@@ -141,6 +141,12 @@ h1 {
     margin: 30px 0;
 }
 
+.ad-container {
+    margin: 20px 0;
+    text-align: center;
+    min-height: 90px;
+}
+
 .contact-section {
     text-align: left;
 }
