@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageTitle = document.getElementById('page-title');
     const mainHeading = document.getElementById('main-heading');
     const contactHeading = document.getElementById('contact-heading');
+    const commentsHeading = document.getElementById('comments-heading');
     const emailInput = document.getElementById('email-input');
     const messageInput = document.getElementById('message-input');
     const submitBtn = document.getElementById('submit-btn');
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heading: "What should I eat for dinner?",
             generateBtn: "Get a Recommendation",
             contactHeading: "Partnership Inquiry",
+            commentsHeading: "What do you think?",
             emailPlaceholder: "Your Email",
             messagePlaceholder: "Your Message",
             submitBtn: "Send Inquiry",
@@ -60,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             heading: "오늘 저녁 뭐 먹지?",
             generateBtn: "메뉴 추천받기",
             contactHeading: "제휴 문의",
+            commentsHeading: "의견을 남겨주세요",
             emailPlaceholder: "이메일 주소",
             messagePlaceholder: "문의 내용",
             submitBtn: "문의 보내기",
@@ -113,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mainHeading.textContent = t.heading;
         generateBtn.textContent = t.generateBtn;
         contactHeading.textContent = t.contactHeading;
+        commentsHeading.textContent = t.commentsHeading;
         emailInput.placeholder = t.emailPlaceholder;
         messageInput.placeholder = t.messagePlaceholder;
         submitBtn.textContent = t.submitBtn;
