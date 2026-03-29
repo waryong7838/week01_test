@@ -206,20 +206,3 @@ h1 {
     margin-top: 30px;
     text-align: left;
 }
-
-.comments-section h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Hide the native Disqus heading */
-#disqus_thread {
-    margin-top: 20px;
-}
-#disqus_thread iframe {
-    margin-bottom: -40px; /* Adjust if needed to remove extra space */
-}
-/* Note: We can't strictly hide the internal iframe text via CSS due to cross-origin rules, 
-but we can ensure our custom heading stands out. If the user still sees it, 
-it's part of the Disqus iframe itself which we just have to live with. */
