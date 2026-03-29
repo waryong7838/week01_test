@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What's for Dinner? - Menu Recommender</title>
+    <title id="page-title">What's for Dinner? - Menu Recommender</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="controls-container">
+        <button id="lang-toggle" class="lang-toggle" aria-label="Toggle Language">KO</button>
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
-        <h1>What should I eat for dinner?</h1>
+    </div>
+    
+    <div class="container">
+        <h1 id="main-heading">What should I eat for dinner?</h1>
         <div class="menu-display">
             <div id="menu-card" class="menu-card">
                 <img id="menu-image" src="" alt="Menu Image">
@@ -21,15 +25,15 @@
         <hr class="divider">
 
         <div class="contact-section">
-            <h2>Partnership Inquiry</h2>
+            <h2 id="contact-heading">Partnership Inquiry</h2>
             <form action="https://formspree.io/f/mbdpgdod" method="POST" id="contact-form">
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="email" name="email" id="email-input" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <textarea name="message" id="message-input" placeholder="Your Message" required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Inquiry</button>
+                <button type="submit" id="submit-btn" class="submit-btn">Send Inquiry</button>
             </form>
             <div id="form-status"></div>
         </div>
