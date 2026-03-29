@@ -1,10 +1,11 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const generateBtn = document.getElementById('generate-btn');
     const menuCard = document.getElementById('menu-card');
     const menuResult = document.getElementById('menu-result');
     const menuImage = document.getElementById('menu-image');
     const themeToggleBtn = document.getElementById('theme-toggle');
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
 
     // Theme Toggle Logic
     const currentTheme = localStorage.getItem('theme');
@@ -50,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     generateBtn.addEventListener('click', () => {
-        // Simple fade out animation
         menuCard.style.opacity = '0';
         
         setTimeout(() => {
@@ -60,13 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
             menuResult.textContent = selectedMenu.name;
             menuImage.src = selectedMenu.image;
             menuImage.alt = selectedMenu.name;
-            menuImage.style.display = 'block'; // Show the image
+            menuImage.style.display = 'block';
             
-            // Assign random color (optional effect)
             const colors = ['#ff9999', '#ffcc99', '#ffff99', '#ccff99', '#99ff99', '#99ffcc', '#99ffff', '#99ccff', '#9999ff', '#cc99ff', '#ff99ff', '#ff99cc'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             
-            // Maintain text color in dark mode, highlight background in light mode
             if(!document.body.classList.contains('dark-mode')) {
                  menuCard.style.backgroundColor = randomColor;
             } else {
@@ -74,8 +72,42 @@ document.addEventListener('DOMContentLoaded', () => {
                  menuCard.style.backgroundColor = 'var(--placeholder-bg)';
             }
             
-            // Fade in animation
             menuCard.style.opacity = '1';
         }, 300);
     });
+
+    // Formspree AJAX Submission
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const data = new FormData(event.target);
+        
+        try {
+            const response = await fetch(event.target.action, {
+                method: contactForm.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                formStatus.textContent = "Thank you! Your message has been sent.";
+                formStatus.className = "success";
+                contactForm.reset();
+            } else {
+                const result = await response.json();
+                if (Object.hasOwn(result, 'errors')) {
+                    formStatus.textContent = result.errors.map(error => error.message).join(", ");
+                } else {
+                    formStatus.textContent = "Oops! There was a problem submitting your form.";
+                }
+                formStatus.className = "error";
+            }
+        } catch (error) {
+            formStatus.textContent = "Oops! There was a problem submitting your form.";
+            formStatus.className = "error";
+        }
+    }
+    
+    contactForm.addEventListener("submit", handleSubmit);
 });
