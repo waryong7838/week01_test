@@ -136,6 +136,18 @@ document.addEventListener('DOMContentLoaded', () => {
                formStatus.textContent = t.errorMsg;
            }
         }
+
+        // Update Disqus iframe language
+        if (typeof DISQUS !== 'undefined') {
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.url = "https://waryong7838.github.io/week01_test/";
+                    this.page.identifier = "week01_test_main";
+                    this.language = lang;
+                }
+            });
+        }
     }
 
     // Generate Menu Handler
